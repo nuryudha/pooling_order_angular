@@ -1,0 +1,95 @@
+/* .container {
+  margin: 0 auto;
+  text-align: left;
+  max-width: 420px;
+  background-color: #fff;
+}
+
+.container-card-data {
+  max-width: 420px;
+}
+
+.form-field {
+  display: block;
+}
+
+.form-card-data {
+  padding: 0;
+  background-color: #f0f8ff;
+  margin-bottom: 10px;
+  border-left-color: #f7ad00;
+  border-left-style: solid;
+}
+
+.card-header-data {
+  padding: 0;
+}
+
+.icon-darkblue {
+  color: #003d79;
+} */
+
+/* custom filter */
+mat-form-field {
+  width: 100%;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #f7ad00 !important;
+}
+::ng-deep .mat-input-element {
+  caret-color: #f7ad00;
+}
+/* ::ng-deep .mat-form-field-underline { */
+/*
+  - change color of underline
+  - prevent underline input dot when it disable
+  */
+/* background-color: #808080 !important;
+} */
+.mat-focused .mat-icon {
+  color: #f7ad00;
+}
+::ng-deep .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #f7ad00 !important;
+}
+
+/* custom content card */
+mat-card {
+  border-radius: 1em !important;
+  background-color: #f0f8ff;
+  text-align: left; 
+  word-wrap: break-word;
+  cursor: pointer;
+  border-left: 0.2em solid #f7ad00;
+  margin-bottom: 0.8em;
+}
+.card-title{
+  margin-bottom: 3px !important;
+  font-weight: bold;
+  line-height: normal;
+}
+.card-subtitle{
+  color: rgb(73, 73, 73);
+  line-height: normal;
+}
+h5:last-child {
+  margin-bottom: 0;
+}
+
+/* custom no data exist */
+.custom-no-data-exist {
+  height: 90vh;
+}
+.custom-no-data-exist .row {
+  height: 90%;
+}
+.custom-no-data-exist img {
+  width: 100%;
+  height: 100%;
+}
+.custom-no-data-exist h4 {
+  margin-top: -3.5em;
+  font-family: 'Baloo Bhaijaan 2', cursive;
+}

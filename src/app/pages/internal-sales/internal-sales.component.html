@@ -1,0 +1,57 @@
+<div class="container-fluid" *ngIf="internalSales | filter:searchText as result">
+  <div class="row justify-content-center">
+    <div class="col-10 col-sm-10 col-md-6 col-lg-4 mt-3">
+      <div class="input-group mb-2">
+          <mat-form-field appearance="legacy">
+              <mat-label>Filter</mat-label>
+              <input matInput type="text" name="search" placeholder=" ... " [(ngModel)]="searchText" autocomplete="off" aria-label="Search">
+              <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+                  <mat-icon>close</mat-icon>
+              </button>
+              <mat-icon aria-hidden="false" class="coba" matSuffix>filter_list</mat-icon>
+          </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+      <mat-card *ngFor="let intSls of result" (click)="listClicked(intSls)">
+        <div class="row">
+          <div class="col">
+            <h5 class="card-title">NIK</h5>
+            <h5 class="card-subtitle">{{intSls.empl_acc_nik}}</h5>
+          </div>
+          <div class="col">
+            <h5 class="card-title">NAMA</h5>
+            <h5 class="card-subtitle">{{intSls.empl_name}}</h5>
+          </div>
+          <div class="col">
+            <h5 class="card-title">JABATAN</h5>
+            <h5 class="card-subtitle">{{intSls.empl_empl_job_code}}</h5>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div *ngIf="noListSales || result?.length == 0" class="container custom-no-data-exist">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-3 my-auto text-center">
+              <img src="../../../assets/images/data-not-found.gif" alt="data not found gif">
+              <h4>Tidak ada data ditemukan</h4>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ngx-spinner -->
+<ngx-spinner 
+  bdColor = "rgba(255,255,255,1)" 
+  size = "default" 
+  color = "#f7ad00" 
+  type = "ball-newton-cradle" 
+  [fullScreen] = "true">
+</ngx-spinner>

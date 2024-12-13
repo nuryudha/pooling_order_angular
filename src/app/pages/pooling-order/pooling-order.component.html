@@ -1,0 +1,271 @@
+<div class="container">
+  <div class="row" *ngIf="!serverProblem">
+    <div class="col-12">
+      <mat-tab-group mat-align-tabs="center" (selectedTabChange)="tabActive($event)">
+
+        <!-- Tab 1 -->
+        <mat-tab label="Screening 1" *ngIf="poolingOrder | filter:searchText as result">
+          <div *ngIf="!noDataExist" class="container">
+            <div class="row justify-content-center mt-3">
+                <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4">
+                    <div class="input-group mb-2">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Filter</mat-label>
+                            <input matInput type="text" name="search" placeholder=" ... " [(ngModel)]="searchText" autocomplete="off" aria-label="Search">
+                            <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                            <mat-icon aria-hidden="false" class="coba" matSuffix>filter_list</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center main-page-card">
+              <div class="col-12 col-sm-10 col-md-5 col-lg-4 col-xl-3 cover-both-card" *ngFor="let pooling of result" (click)="onDetailOrder(pooling)">
+                <mat-card class="custom-header-card">
+                  <div class="row">
+                    <div class="col-5">
+                      <span>{{pooling.source_order_app_code}}</span>
+                    </div>
+                    <div class="col-7">
+                      <span>Menunggu proses claim</span>
+                    </div>
+                  </div>
+                </mat-card>
+                <mat-card class="custom-content-card">
+                  <div class="row">
+                      <div class="col-6">
+                          <h5 class="card-title">NAMA SESUAI KTP</h5>
+                          <h5 class="card-subtitle">{{pooling.nama_sesuai_ktp}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">NO ORDER</h5>
+                          <h5 class="card-subtitle">{{pooling.order_id}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">NO HP 1</h5>
+                          <h5 class="card-subtitle">{{pooling.no_hp_1}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">TANGGAL ORDER</h5>
+                          <h5 class="card-subtitle">{{pooling.tanggal_order}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">INFORMASI ALAMAT</h5>
+                          <h5 class="card-subtitle">{{pooling.informasi_alamat}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">NAMA DEALER</h5>
+                          <h5 class="card-subtitle">{{pooling.outlet_channel_desc}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">HASIL SCREENING</h5>
+                          <h5 class="card-subtitle">{{pooling.hasil_screening}}</h5>
+                      </div>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+
+          <!-- when no data available -->
+          <div *ngIf="noDataExist || result?.length == 0" class="container custom-no-data-exist">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-3 my-auto text-center">
+                  <img src="../../../assets/images/data-not-found.gif" alt="data not found gif">
+                  <h4>Tidak ada data ditemukan</h4>
+                  <button *ngIf="noDataExist || result?.length > 0" mat-stroked-button (click)="reloadWhenNoDataAvailable()">
+                      <mat-icon>refresh</mat-icon>
+                      Reload
+                  </button>
+                </div>
+            </div>
+          </div>
+
+        </mat-tab>
+
+        <!-- Tab 2 -->
+        <mat-tab label="Screening 2" *ngIf="poolingOrder | filter:searchText as result">
+          <div *ngIf="!noDataExist" class="container">
+            <div class="row justify-content-center mt-3">
+                <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4">
+                    <div class="input-group mb-2">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Filter</mat-label>
+                            <input matInput type="text" name="search" placeholder=" ... " [(ngModel)]="searchText" autocomplete="off" aria-label="Search">
+                            <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                            <mat-icon aria-hidden="false" class="coba" matSuffix>filter_list</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center main-page-card">
+              <div class="col-12 col-sm-10 col-md-5 col-lg-4 col-xl-3 cover-both-card" *ngFor="let pooling of result" (click)="onDetailOrder(pooling)">
+                <mat-card class="custom-header-card">
+                  <div class="row">
+                    <div class="col-5">
+                      <span>{{pooling.source_order_app_code}}</span>
+                    </div>
+                    <div class="col-7">
+                      <span>Menunggu proses claim</span>
+                    </div>
+                  </div>
+                </mat-card>
+                <mat-card class="custom-content-card">
+                  <div class="row">
+                      <div class="col-6">
+                          <h5 class="card-title">NAMA SESUAI KTP</h5>
+                          <h5 class="card-subtitle">{{pooling.nama_sesuai_ktp}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">NO ORDER</h5>
+                          <h5 class="card-subtitle">{{pooling.order_id}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">NO HP 1</h5>
+                          <h5 class="card-subtitle">{{pooling.no_hp_1}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">TANGGAL ORDER</h5>
+                          <h5 class="card-subtitle">{{pooling.tanggal_order}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">INFORMASI ALAMAT</h5>
+                          <h5 class="card-subtitle">{{pooling.informasi_alamat}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">NAMA DEALER</h5>
+                          <h5 class="card-subtitle">{{pooling.outlet_channel_desc}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">HASIL SCREENING</h5>
+                          <h5 class="card-subtitle">{{pooling.hasil_screening}}</h5>
+                      </div>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+
+          <!-- when no data available -->
+          <div *ngIf="noDataExist || result?.length == 0" class="container custom-no-data-exist">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-3 my-auto text-center">
+                  <img src="../../../assets/images/data-not-found.gif" alt="data not found gif">
+                  <h4>Tidak ada data ditemukan</h4>
+                  <button *ngIf="noDataExist || result?.length > 0" mat-stroked-button (click)="reloadWhenNoDataAvailable()">
+                      <mat-icon>refresh</mat-icon>
+                      Reload
+                  </button>
+                </div>
+            </div>
+          </div>
+
+        </mat-tab>
+
+        <!-- Tab 3 -->
+        <mat-tab label="Screening 3" *ngIf="poolingOrder | filter:searchText as result">
+          <div *ngIf="!noDataExist" class="container">
+            <div class="row justify-content-center mt-3">
+                <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4">
+                    <div class="input-group mb-2">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Filter</mat-label>
+                            <input matInput type="text" name="search" placeholder=" ... " [(ngModel)]="searchText" autocomplete="off" aria-label="Search">
+                            <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                            <mat-icon aria-hidden="false" class="coba" matSuffix>filter_list</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center main-page-card">
+              <div class="col-12 col-sm-10 col-md-5 col-lg-4 col-xl-3 cover-both-card" *ngFor="let pooling of result" (click)="onDetailOrder(pooling)">
+                <mat-card class="custom-header-card">
+                  <div class="row">
+                    <div class="col-5">
+                      <span>{{pooling.source_order_app_code}}</span>
+                    </div>
+                    <div class="col-7">
+                      <span>Menunggu proses claim</span>
+                    </div>
+                  </div>
+                </mat-card>
+                <mat-card class="custom-content-card">
+                  <div class="row">
+                      <div class="col-6">
+                          <h5 class="card-title">NAMA SESUAI KTP</h5>
+                          <h5 class="card-subtitle">{{pooling.nama_sesuai_ktp}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">NO ORDER</h5>
+                          <h5 class="card-subtitle">{{pooling.order_id}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">NO HP 1</h5>
+                          <h5 class="card-subtitle">{{pooling.no_hp_1}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">TANGGAL ORDER</h5>
+                          <h5 class="card-subtitle">{{pooling.tanggal_order}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">INFORMASI ALAMAT</h5>
+                          <h5 class="card-subtitle">{{pooling.informasi_alamat}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">NAMA DEALER</h5>
+                          <h5 class="card-subtitle">{{pooling.outlet_channel_desc}}</h5>
+                      </div>
+                      <div class="col-6">
+                          <h5 class="card-title">HASIL SCREENING</h5>
+                          <h5 class="card-subtitle">{{pooling.hasil_screening}}</h5>
+                      </div>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+
+          <!-- when no data available -->
+          <div *ngIf="noDataExist || result?.length == 0" class="container custom-no-data-exist">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-3 my-auto text-center">
+                  <img src="../../../assets/images/data-not-found.gif" alt="data not found gif">
+                  <h4>Tidak ada data ditemukan</h4>
+                  <button *ngIf="noDataExist || result?.length > 0" mat-stroked-button (click)="reloadWhenNoDataAvailable()">
+                      <mat-icon>refresh</mat-icon>
+                      Reload
+                  </button>
+                </div>
+            </div>
+          </div>
+          
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <div class="row justify-content-center server-problem" *ngIf="serverProblem">
+    <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-3 my-auto text-center">
+      <img src="../../../assets/images/server-error-image.jpg" alt="server problem image">
+      <h4>Internal server sedang bermasalah silahkan kembali beberapa saat lagi</h4>
+    </div>
+  </div>
+</div>
+
+<!-- ngx-spinner -->
+<ngx-spinner 
+  bdColor = "rgba(255,255,255,1)" 
+  size = "default" 
+  color = "#f7ad00" 
+  type = "ball-newton-cradle" 
+  [fullScreen] = "true">
+</ngx-spinner>

@@ -1,0 +1,169 @@
+/* custom tab */
+::ng-deep .mat-tab-label {
+  padding: 0 10px !important;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  color: #f7ad00;
+  font-weight: bold;
+}
+
+
+/* custom filter */
+mat-form-field {
+  width: 100%;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #f7ad00 !important;
+}
+::ng-deep .mat-input-element {
+  caret-color: #f7ad00;
+}
+/* ::ng-deep .mat-form-field-underline { */
+/*
+  - change color of underline
+  - prevent underline input dot when it disable
+  */
+/* background-color: #808080 !important;
+} */
+.mat-focused .mat-icon {
+  color: #f7ad00;
+}
+::ng-deep .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #f7ad00 !important;
+}
+
+/* main page card */
+.main-page-card {
+  margin-left: -20px; 
+  margin-right: -20px;
+}
+.cover-both-card {
+  padding-left: 0; 
+  padding-right: 0; 
+  margin: 8px;
+}
+
+/* custom header card */
+.custom-header-card{
+  margin-bottom: -8px; 
+  z-index: 2; 
+  border-radius: 12px; 
+  background-color: #003d79; 
+  color: #ffffff; 
+  padding-top: 0; 
+  padding-bottom: 0;
+  cursor: pointer;
+}
+.custom-header-card .row {
+  padding: 8px 0;
+}
+.custom-header-card div div:nth-child(1) {
+  display: flex; 
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 13px;
+  line-height: 1.2em;
+}
+.custom-header-card div div:nth-child(2) {
+  display: flex; 
+  justify-content: flex-end;
+  align-items: center;
+  font-style: italic;
+  font-size: 12px;
+}
+
+/* custom content card */
+.custom-content-card {
+  border-radius: 12px;
+  background-color: #f0f8ff;
+  text-align: left; 
+  word-wrap: break-word;
+  cursor: pointer;
+}
+.card-title{
+  margin-bottom: 3px !important;
+  font-weight: bold;
+  line-height: normal;
+}
+.card-subtitle{
+  color: rgb(73, 73, 73);
+  line-height: normal;
+}
+
+/* custom ngx-spinner */
+ngx-spinner p {
+  color: #f7ad00;
+}
+
+/* custom no data exist */
+.custom-no-data-exist {
+  height: 90vh;
+}
+.custom-no-data-exist .row {
+  height: 90%;
+}
+.custom-no-data-exist img {
+  width: 100%;
+  height: 100%;
+}
+.custom-no-data-exist h4 {
+  margin-top: -3.5em;
+  font-family: 'Baloo Bhaijaan 2', cursive;
+}
+.custom-no-data-exist button {
+  margin-top: 30px;
+  color: #f7ad00;
+  border-radius: 1em;
+  border: 0.1em solid #f7ad00; 
+}
+
+/* custom server problem */
+.server-problem {
+  height: 100vh;
+}
+.server-problem img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* responsive */
+@media (min-width: 470px) {
+  .custom-no-data-exist h4 {
+    margin-top: -5em;
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-no-data-exist h4 {
+    margin-top: -3em;
+  }
+}
+
+
+@media (min-width: 992px) {
+
+  /* custom header card */
+  .custom-header-card div div:nth-child(1) {
+    font-size: 12px;
+  }
+  .custom-header-card div div:nth-child(2) {
+    font-size: 12px;
+  }
+
+  /* custom card */
+  .card-title{
+    font-size: 10px;
+  } 
+  .card-subtitle{
+    font-size: 10px;
+    margin-top: 0;
+  }
+}
+
+
+

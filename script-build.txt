@@ -1,0 +1,3 @@
+- build envy development : ng build --configuration development
+- build envy uat : ng build --configuration uat
+- build envy production : ng build

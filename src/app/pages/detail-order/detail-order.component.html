@@ -1,0 +1,161 @@
+<div class="container" *ngIf="showPage">
+  <div class="row justify-content-center pt-4 pd-bottom">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-5">
+      <mat-accordion multi>
+
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3 class="text-center">Detail Customer</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <div class="row mt-3">
+              <div class="col">
+                <h4>Nama Sesuai KTP</h4>
+              </div>
+              <div class="col">
+                <p>{{detailCustomer?.nama_sesuai_ktp}}</p>
+                <p *ngIf="screening == '3'">{{detailCustomer?.debitur_nama_sesuai_ktp}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>Informasi Alamat</h4>
+              </div>
+              <div class="col">
+                <p>{{detailCustomer?.alamat_debitur?.alamat_domisili?.alamat}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>No HP 1</h4>
+              </div>
+              <div class="col">
+                <p>{{detailCustomer?.no_hp_1}}</p>
+                <p *ngIf="screening == '3'">{{detailCustomer?.debitur_no_hp_1}}</p>
+              </div>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3 class="text-center">Detail Kendaraan</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <div class="row mt-3">
+              <div class="col">
+                <h4>Objek</h4>
+              </div>
+              <div class="col">
+                <p>{{detailKendaraan?.obj_desc}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>Merk</h4>
+              </div>
+              <div class="col">
+                <p>{{detailKendaraan?.brand_desc}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>Tipe</h4>
+              </div>
+              <div class="col">
+                <p>{{detailKendaraan?.type_desc}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>Model</h4>
+              </div>
+              <div class="col">
+                <p>{{detailKendaraan?.model_desc}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>Tahun</h4>
+              </div>
+              <div class="col">
+                <p>{{detailKendaraan?.obj_year}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>Object Pembiayaan</h4>
+              </div>
+              <div class="col">
+                <p>{{objHeader?.financing_obj_desc}}</p>
+              </div>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3 class="text-center">Struktur Kredit</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <div class="row mt-3">
+              <div class="col">
+                <h4>Harga OTR</h4>
+              </div>
+              <div class="col">
+                <p>{{strukturKredit?.obj_price | number}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>Tenor</h4>
+              </div>
+              <div class="col">
+                <p>{{strukturKredit?.tenor}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>DP Bayar</h4>
+              </div>
+              <div class="col">
+                <p>{{strukturKredit?.down_payment | number}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>Angsuran</h4>
+              </div>
+              <div class="col">
+                <p>{{strukturKredit?.installment_amount | number}}</p>
+                <p *ngIf="screening == '3'">{{strukturKredit?.calculation_structure_credit?.installment_amount | number}}</p>
+              </div>
+            </div>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </div>
+  </div>
+</div>
+
+<!-- custom fixed button -->
+<div class="custom-fixed-button" *ngIf="showPage">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col text-center">
+        <button mat-stroked-button class="me-4" color="accent" (click)="cancelClicked()">Cancel</button>
+        <button mat-raised-button class="ms-4" color="accent" (click)="nextClicked()">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ngx-spinner -->
+<ngx-spinner 
+  bdColor = "rgba(255,255,255,1)" 
+  size = "default" 
+  color = "#f7ad00" 
+  type = "ball-newton-cradle" 
+  [fullScreen] = "true">
+</ngx-spinner>
